@@ -1,40 +1,444 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>Intro to Vue.js - Pablo Jurado</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/league.css" id="theme" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/zenburn.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Intro to Vue.js</h1>
+          <img src="assets/logo.png" alt="Vue logo" />
+        </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <section>
+          <h2>About me</h2>
+          <p class="fragment">
+            My name is Pablo Jurado. I am a Front end engineer at Dialexa. I
+            shifted from Visual Design to Software Development.
+          </p>
+          <p class="fragment">
+            I am originally from Argentina. I have lived on Maui, Honolulu,
+            Houston, and now Dallas ❤️
+          </p>
+        </section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        <section>
+          <h2>About this talk</h2>
+          <p class="fragment">
+            This is an introduction to some core concepts of the Vue framework.
+            If you are an experience Vue developer, you probably won't learn
+            anything new. This talk is aimed at developers who have never use
+            Vue, to have a general idea of the framework.
+          </p>
+        </section>
+
+        <section>
+          <h2>Disclaimer</h2>
+          <img
+            class="fragment"
+            height="300px"
+            src="assets/react.png"
+            alt="unmask react logo"
+          />
+        </section>
+
+        <section>
+          <h2>But... Why do we need Front end frameworks?</h2>
+          <p class="fragment">...</p>
+        </section>
+
+        <section>
+          <h3>Front End Frameworks help us to:</h3>
+          <ul>
+            <li class="fragment">
+              Make you app more maintainable: easy for you and others to read,
+              test, and change code
+            </li>
+            <li class="fragment">Reusable components</li>
+            <li class="fragment">Improves DOM manipulations speed</li>
+            <li class="fragment">Typically have good documentation</li>
+            <li class="fragment">
+              Makes easier onboarding/hiring new developers (don't need to teach
+              them your in house Framework)
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <div>
+            <h3>
+              What makes
+              <img
+                src="assets/logo.png"
+                height="50px"
+                alt="Vue logo"
+                style="margin: 0px"
+              />UE different?
+            </h3>
+
+            <ul>
+              <li class="fragment">
+                You can start using Vue by just adding a script tag.
+              </li>
+              <li class="fragment">
+                The core team is not associated with a big software company like
+                Facebook or Google.
+              </li>
+              <li class="fragment">
+                Has scoped CSS out of the box. (No need for CSS in JS).
+              </li>
+              <li class="fragment">
+                Has State management and Routing included.
+              </li>
+            </ul>
+            <br />
+            <br />
+            <div class="fragment">
+              <p>
+                <a
+                  href="https://vuejs.org/v2/guide/comparison.html"
+                  target="_blank"
+                >
+                  Comparison with Other Frameworks
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://npmcharts.com/compare/react,@angular/core,vue"
+                  target="_blank"
+                  >Downloads chart</a
+                >
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>Let's gets started</section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### The Vue Instance
+
+              Every Vue application starts by creating a new instance with the Vue function and passing the options object.
+
+              ```js
+              var vueInstance = new Vue({
+                el: '#example',
+                data: {
+                  newTodoText: '',
+                  todos: [],
+                }
+              })
+              ```
+            </script>
+          </div>
+
+          <a href="https://vuejs.org/v2/api/#Options-Data" target="_blank"
+            >Options API
+          </a>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            You can add methods to the Vue instance.
+
+            ```js
+            var vueInstance = new Vue({
+              el: '#example',
+              data: {
+                newTodoText: '',
+                todos: [],
+              },
+              methods: {
+                addTodo: function() {
+                  //...
+                }
+              }
+            })
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            You can render the data values.
+
+            ```js
+            var app = new Vue({
+              el: '#app',
+              data: {
+                message: "hello from JS"
+              }
+            })
+            ```
+            ```vue
+            <div id="app">
+              <p>{{ message }}</p>
+            </div>
+            ```
+          </script>
+        </section>
+
+        <section>TODO: you can add logic to your templates</section>
+
+        <section>TODO: computed values</section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              #### Lifecycle Hooks
+
+              The Vue instance goes through a series of initialization steps when it’s created.
+              Some example are created, mounted, updated, and destroyed.
+
+              ```js
+              var app = new Vue({
+                el: "#example1",
+                data: {
+                  message: "Hello Vue!",
+                },
+                created: function () {
+                  console.log("#example1 was created");
+                },
+              });
+              ```
+            </script>
+          </div>
+          <a
+            href="https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram"
+            target="_blank"
+            >Lifecycle Diagram
+          </a>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ## Directives
+
+              Directives are special attributes with the `v-` prefix.
+
+              A directive’s job is to automatically update the DOM when the value has changes.
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-if
+
+              Would remove/insert the `<p>` element based on the truthiness of the value of the expression `isActive`.
+
+              ```vue
+
+              <p v-if="isActive">Hello user!</p>
+
+
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-else
+
+              You can recreate a javascript switch statement on a Vue template.
+
+              ```vue
+              <div v-if="type === 'A'">
+                A
+              </div>
+              <div v-else-if="type === 'B'">
+                B
+              </div>
+              <div v-else-if="type === 'C'">
+                C
+              </div>
+              <div v-else>
+                Not A/B/C
+              </div>
+
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-show
+
+              Similar to to `v-if`. The main difference is that `v-show` will always be rendered and remain in the DOM.
+              `v-show` only toggles the display CSS property of the element.
+
+              ```vue
+
+              <h1 v-show="isActive">Hello!</h1>
+
+
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-bind
+
+              Some directives can take an "argument". For example, the `v-bind` directive is used to update the image source attribute.
+
+              ```vue
+
+              <img v-bind:src="imageSrc">
+
+
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-bind CSS classes
+
+              We can pass an object to `v-bind:class` to dynamically toggle classes.
+              The active class will be determined by the truthiness of the data property isActive.
+
+              ```vue
+              <div v-bind:class="{ active: isActive }"></div>
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-on
+
+              Listens to DOM events
+
+              ```vue
+
+              <a v-on:click="doSomething"> ... </a>
+
+
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### v-for
+              ```js
+              var app = new Vue({
+                el: '#app',
+                data: {
+                  items: ["item 1", "item 2", "item 3"]
+                }
+              })
+              ```
+              ```vue
+              <div id="app">
+                <ul>
+                  <li v-for="item in items">
+                    {{ item }}
+                  </li>
+                </ul>
+              </div>
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              ### ✨v-model✨
+
+              Create two-way data bindings on form input, textarea, and select elements.
+
+              ```js
+              var app = new Vue({
+                el: '#example1',
+                data: {
+                  message: "I am using v-model"
+                }
+              })
+              ```
+              ```vue
+              <div id="example1">
+                <input type="text" v-model="message" />
+                <p>{{ message }}</p>
+              </div>
+
+              ```
+            </script>
+          </div>
+          <div id="example1">
+            <input type="text" v-model="message" />
+            <p>{{ message }}</p>
+          </div>
+        </section>
+
+        <section>### TODO: Recap</section>
+
+        <section>
+          <a
+            href="https://codesandbox.io/s/color-clock-l72l0?file=/src/App.vue"
+            target="_blank"
+            >Demo 1
+          </a>
+        </section>
+
+        <section>### TODO: Components</section>
+
+        <!-- end of slides dev -->
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/examples.js"></script>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
