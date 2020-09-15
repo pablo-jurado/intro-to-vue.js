@@ -1,11 +1,11 @@
-var app = new Vue({
+var app0 = new Vue({
   el: "#example0",
   data: {
     message: "hello from JS",
   },
 });
 
-var vueInstance = new Vue({
+var vueInstance1 = new Vue({
   el: "#example1",
   data: {
     newTodoText: "",
@@ -19,14 +19,14 @@ var vueInstance = new Vue({
   },
 });
 
-var vueInstance = new Vue({
+var vueInstance2 = new Vue({
   el: "#example2",
   data: {
     message: "i'm a lasagna hog",
   },
 });
 
-var vueInstance = new Vue({
+var vueInstance3 = new Vue({
   el: "#example3",
   data: {
     message: "i'm a lasagna hog",
@@ -38,7 +38,7 @@ var vueInstance = new Vue({
   },
 });
 
-var app = new Vue({
+var app4 = new Vue({
   el: "#example4",
   data: {
     message: "I am using v-model",

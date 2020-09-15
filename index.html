@@ -159,7 +159,42 @@
         <section>
           <div data-markdown>
             <script type="text/template">
+              Another way of creating a Vue instance (App.vue)
+              ```
+              <template>
+                <div id="app">
+                 {{ message }}
+                </div>
+              </template>
+              ```
+              ```js
+              < script>
+              export default {
+                name: "App",
+                data: {
+                  message: "Sup Vue!"
+                }
+              };
+              </ script>
+              ```
+              ```
+              <style>
+                #app {
+                  text-align: center;
+                  color: #2c3e50;
+                }
+              </style>
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <div data-markdown>
+            <script type="text/template">
               You can render the data on the template.
+
+              Will re-render when the data changes.
 
               ```js
               var app = new Vue({
@@ -184,15 +219,17 @@
 
         <section data-markdown>
           <script type="text/template">
-            You can add styles
+            You can have scoped styles
 
             ```js
-            var app = new Vue({
-              el: '#example0',
+            < script>
+            export default {
+              name: "App",
               data: {
                 message: "hello from JS"
               }
-            })
+            };
+            </ script>
             ```
             ```vue
             <div id="example0">
@@ -200,7 +237,7 @@
             </div>
             ```
             ```
-            <style>
+            <style scoped>
             #app {
               color: #2c3e50;
             }
@@ -301,7 +338,7 @@
         <section>
           <div data-markdown>
             <script type="text/template">
-              #### Lifecycle Hooks
+              ### Lifecycle Hooks
 
               The Vue instance goes through a series of initialization steps when it’s created.
               Some example are created, mounted, updated, and destroyed.
@@ -525,23 +562,116 @@
         </section>
 
         <section>
-          <h3>TODO: Components</h3>
-          Components are reusable Vue instances. They accept the same options as
-          Vue instances.
-        </section>
+          <div data-markdown>
+            <script type="text/template">
+              ### Components
+              Are reusable Vue instances with a name.
+              They accept the same options as `new Vue`, such as data, computed, methods, lifecycle hooks and more.
 
-        <section>TODO: Using the components in the Vue Instance.</section>
+              ```js
+              < script>
+                export default {
+                  name: "HelloWord",
+                  data: function() {
+                    return {
+                      name: "Dude!"
+                    };
+                  }
+                };
+              </ script>
+              ```
+              ```vue
+              <p>Hello {{ name }}!</p>
+              ```
+            </script>
+          </div>
+        </section>
 
         <section>
-          <h3>TODO: Props</h3>
-          Props are custom attributes you can register on a component. When a
-          value is passed to a prop attribute, it becomes a property on that
-          component instance
+          <div data-markdown>
+            <script type="text/template">
+              You can import your components and reuse them
+
+              ```js
+              < script>
+                import HelloWord from "./components/HelloWord";
+                
+                export default {
+                  name: "App",
+                  components: {
+                    HelloWord,
+                  },
+                };
+                </ script>
+                
+              ```
+              ```vue
+              <template>
+                <div id="app">
+                  <HelloWord></HelloWord>
+                  <HelloWord></HelloWord>
+                </div>
+              <template>
+              ```
+            </script>
+          </div>
         </section>
 
-        <section>TODO: Rendering components dynamically</section>
+        <section>
+          <div data-markdown>
+            <script type="text/template">
+              You can add props to pass data to your components
 
-        <!-- end of slides dev -->
+              ```js
+              < script>
+                export default {
+                  name: "Tattoo",
+                  props: {
+                    name: String
+                  }
+                };
+              </ script>
+                
+              ```
+              ```vue
+              <template>
+                <div>
+                  <h1>{{ name }}! what does my tattoo say?</h1>
+                </div>
+              </template>
+              ```
+
+              ```
+              <Tattoo v-bind:name="Sweet"></Tattoo>
+              <Tattoo v-bind:name="Dude"></Tattoo>
+              ```
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <a
+            href="https://github.com/pablo-jurado/github-profile-vue"
+            target="_blank"
+            >Demo 2
+          </a>
+        </section>
+
+        <section data-markdown>
+          ### Thank you
+          
+          <a
+            href="https://github.com/pablo-jurado"
+            target="_blank"
+            >https://github.com/pablo-jurado
+          </a>
+          <br>
+          <a
+          href="https://www.linkedin.com/in/juradopablo"
+          target="_blank"
+          >https://www.linkedin.com/in/juradopablo
+        </a>
+        </section>
       </div>
     </div>
 
